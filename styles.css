@@ -88,3 +88,18 @@ footer {
   padding: 1rem 0;
   margin-top: 2rem;
 }
+
+/* Additional spacing for sections */
+main section {
+  margin-bottom: 2rem;
+}
+
+/* Headings styling adjustments */
+main h2, main h3, main h4 {
+  margin-bottom: 1rem;
+}
+
+/* Paragraph spacing */
+main p {
+  margin-bottom: 1rem;
+}
