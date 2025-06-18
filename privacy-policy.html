@@ -3,117 +3,552 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Privacy Policy for NeuroNudge</title>
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+  <title>Privacy Policy - NeuroNudge</title>
+  <meta name="description" content="Privacy Policy for NeuroNudge brain training app. Learn how we protect your data and privacy.">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      line-height: 1.6;
+      color: #333;
+      background: #f8fafc;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* Header */
+    header {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .header-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 0;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #4f46e5;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .app-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .app-icon img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 2rem;
+    }
+
+    nav a {
+      color: #64748b;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s ease;
+      position: relative;
+    }
+
+    nav a:hover {
+      color: #4f46e5;
+    }
+
+    nav a.active {
+      color: #4f46e5;
+    }
+
+    nav a.active::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: #4f46e5;
+      border-radius: 1px;
+    }
+
+    /* Main Content */
+    main {
+      padding: 120px 0 80px;
+    }
+
+    .page-header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .page-header h1 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: #1e293b;
+      margin-bottom: 1rem;
+    }
+
+    .page-header p {
+      font-size: 1.2rem;
+      color: #64748b;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .last-updated {
+      background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
+      color: white;
+      padding: 1rem 2rem;
+      border-radius: 12px;
+      text-align: center;
+      margin-bottom: 2rem;
+      font-weight: 500;
+    }
+
+    /* Content Sections */
+    .content-section {
+      background: white;
+      border-radius: 16px;
+      padding: 2rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+      border: 1px solid #e2e8f0;
+    }
+
+    .content-section h2 {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: #1e293b;
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .section-icon {
+      width: 28px;
+      height: 28px;
+      background: linear-gradient(135deg, #2563eb, #1e40af);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 14px;
+    }
+
+    .content-section h3 {
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: #1e293b;
+      margin: 1.5rem 0 1rem 0;
+    }
+
+    .content-section p {
+      color: #64748b;
+      margin-bottom: 1rem;
+      line-height: 1.7;
+    }
+
+    .content-section p:last-child {
+      margin-bottom: 0;
+    }
+
+    .content-section ul {
+      margin-bottom: 1rem;
+      padding-left: 1.5rem;
+    }
+
+    .content-section li {
+      color: #64748b;
+      margin-bottom: 0.75rem;
+      line-height: 1.7;
+    }
+
+    .content-section li:last-child {
+      margin-bottom: 0;
+    }
+
+    .content-section strong {
+      color: #1e293b;
+      font-weight: 600;
+    }
+
+    .content-section a {
+      color: #2563eb;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    .content-section a:hover {
+      color: #1e40af;
+      text-decoration: underline;
+    }
+
+    /* Highlight Boxes */
+    .highlight-box {
+      background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+      border: 1px solid #0ea5e9;
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin: 1.5rem 0;
+    }
+
+    .highlight-box p {
+      color: #0c4a6e;
+      margin-bottom: 0;
+      font-weight: 500;
+    }
+
+    /* Contact Section */
+    .contact-section {
+      background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
+      color: white;
+      border-radius: 16px;
+      padding: 2rem;
+      text-align: center;
+      margin-top: 2rem;
+    }
+
+    .contact-section h2 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.75rem;
+    }
+
+    .contact-section .section-icon {
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    .contact-section p {
+      margin-bottom: 1.5rem;
+      opacity: 0.9;
+    }
+
+    .contact-email {
+      display: inline-flex;
+      align-items: center;
+      background: rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(10px);
+      padding: 1rem 1.5rem;
+      border-radius: 12px;
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      transition: transform 0.3s ease, background 0.3s ease;
+      gap: 0.5rem;
+    }
+
+    .contact-email:hover {
+      transform: translateY(-2px);
+      background: rgba(255, 255, 255, 0.3);
+    }
+
+    /* Footer */
+    footer {
+      background: #0f172a;
+      color: white;
+      padding: 40px 0;
+    }
+
+    .footer-content {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      margin-bottom: 2rem;
+      max-width: 1200px;
+      margin-left: auto;
+      margin-right: auto;
+      padding: 0 20px;
+    }
+
+    .footer-section h4 {
+      margin-bottom: 1rem;
+      color: #2563eb;
+      font-weight: 600;
+    }
+
+    .footer-section a {
+      color: #94a3b8;
+      text-decoration: none;
+      display: block;
+      margin-bottom: 0.5rem;
+      transition: color 0.3s ease;
+    }
+
+    .footer-section a:hover {
+      color: white;
+    }
+
+    .footer-section p {
+      color: #94a3b8;
+      line-height: 1.6;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid #334155;
+      padding-top: 2rem;
+      text-align: center;
+      color: #64748b;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .page-header h1 {
+        font-size: 2rem;
+      }
+
+      .content-section {
+        padding: 1.5rem;
+      }
+
+      nav ul {
+        gap: 1rem;
+      }
+
+      .header-container {
+        padding-left: 15px;
+        padding-right: 15px;
+      }
+
+      .contact-section {
+        padding: 1.5rem;
+      }
+    }
+  </style>
 </head>
 <body>
   <header>
-    <div class="container header-container">
-      <h1>NeuroNudge</h1>
+    <div class="header-container">
+      <a href="index.html" class="logo">
+        <div class="app-icon">
+          <img src="AppIcon.png" alt="NeuroNudge App Icon">
+        </div>
+        NeuroNudge
+      </a>
       <nav>
         <ul>
           <li><a href="index.html">Home</a></li>
-          <li><a href="privacy-policy.html">Privacy Policy</a></li>
+          <li><a href="privacy-policy.html" class="active">Privacy</a></li>
           <li><a href="support.html">Support</a></li>
         </ul>
       </nav>
     </div>
   </header>
-  
+
   <main>
     <div class="container">
-      <h2>Privacy Policy for NeuroNudge</h2>
-      <p>Last Updated: 13.03.2025</p>
-      
-      <section>
-        <h3>Introduction</h3>
+      <div class="page-header">
+        <h1>Privacy Policy</h1>
+        <p>Your privacy is important to us. Learn how we collect, use, and protect your information when you use NeuroNudge.</p>
+      </div>
+
+      <div class="last-updated">
+        <p><strong>Last Updated:</strong> March 13, 2025</p>
+      </div>
+
+      <div class="content-section">
+        <h2>
+          <div class="section-icon">📋</div>
+          Introduction
+        </h2>
         <p>
           This Privacy Policy describes how NeuroNudge collects, uses, and shares information when you use our NeuroNudge mobile application and website. 
           Please note that while our mobile app collects certain data (as detailed below), our website does not use any non-essential cookies or tracking mechanisms.
         </p>
-      </section>
-      
-      <section>
-        <h3>Information We Collect</h3>
-        <h4>Information You Provide</h4>
+      </div>
+
+      <div class="content-section">
+        <h2>
+          <div class="section-icon">📊</div>
+          Information We Collect
+        </h2>
+        
+        <h3>Information You Provide</h3>
         <ul>
           <li><strong>Purchase Information:</strong> When you make in-app purchases, we process your transaction through Apple's App Store. We don't collect or store your payment details, which are handled by Apple.</li>
           <li><strong>User Settings:</strong> Your preferences and settings within the app.</li>
           <li><strong>Game Progress:</strong> Your scores, achievements, and statistics to track your progress.</li>
         </ul>
-        <h4>Information Collected Automatically</h4>
+
+        <h3>Information Collected Automatically</h3>
         <ul>
           <li><strong>Device Information:</strong> Device model, operating system version, and other technical information.</li>
           <li><strong>Usage Data:</strong> How you interact with our app, which features you use, and how long you use them.</li>
           <li><strong>Advertising ID:</strong> We use your device's advertising identifier to serve you relevant ads through Google Mobile Ads.</li>
         </ul>
-      </section>
-      
-      <section>
-        <h3>How We Use Your Information</h3>
+      </div>
+
+      <div class="content-section">
+        <h2>
+          <div class="section-icon">🔧</div>
+          How We Use Your Information
+        </h2>
+        <p>We use the information we collect for the following purposes:</p>
         <ul>
-          <li>To provide, maintain, and improve our App.</li>
-          <li>To process your in-app purchases and subscriptions.</li>
-          <li>To personalize your experience and track your progress.</li>
-          <li>To serve relevant advertisements.</li>
-          <li>To understand how users interact with our App.</li>
+          <li>To provide, maintain, and improve our App</li>
+          <li>To process your in-app purchases and subscriptions</li>
+          <li>To personalize your experience and track your progress</li>
+          <li>To serve relevant advertisements</li>
+          <li>To understand how users interact with our App</li>
         </ul>
-      </section>
-      
-      <section>
-        <h3>Third-Party Services</h3>
+      </div>
+
+      <div class="content-section">
+        <h2>
+          <div class="section-icon">🤝</div>
+          Third-Party Services
+        </h2>
+        <p>We work with trusted third-party services to enhance your experience:</p>
         <ul>
           <li><strong>Google Mobile Ads:</strong> Used to display advertisements. Google may collect and process data as described in their <a href="https://policies.google.com/privacy" target="_blank">Privacy Policy</a>.</li>
           <li><strong>Apple StoreKit:</strong> Used to process in-app purchases as described in <a href="https://www.apple.com/legal/privacy/en-ww/" target="_blank">Apple's Privacy Policy</a>.</li>
         </ul>
-      </section>
-      
-      <section>
-        <h3>Data Security</h3>
+      </div>
+
+      <div class="content-section">
+        <h2>
+          <div class="section-icon">🔒</div>
+          Data Security
+        </h2>
         <p>We implement reasonable security measures to protect your personal information from unauthorized access or disclosure. However, no method of electronic transmission or storage is 100% secure.</p>
-      </section>
-      
-      <section>
-        <h3>Website Cookies and Tracking</h3>
+        
+        <div class="highlight-box">
+          <p>Your game progress and personal data are stored securely and are never shared with unauthorized parties.</p>
+        </div>
+      </div>
+
+      <div class="content-section">
+        <h2>
+          <div class="section-icon">🌐</div>
+          Website Cookies and Tracking
+        </h2>
         <p>
           Our website does not use any non-essential cookies or tracking mechanisms. We only utilize cookies that are strictly necessary for the basic functionality of the site.
           No personal data or tracking information is collected through these cookies.
         </p>
-      </section>
-      
-      <section>
-        <h3>Your Rights</h3>
+      </div>
+
+      <div class="content-section">
+        <h2>
+          <div class="section-icon">⚖️</div>
+          Your Rights
+        </h2>
         <p>
-          You may request access to, correction of, or deletion of your personal data by contacting us. You can also adjust your device settings to limit ad tracking.
+          You have the right to access, correct, or delete your personal data. You can also adjust your device settings to limit ad tracking.
+          If you wish to exercise any of these rights, please contact us using the information provided below.
         </p>
-      </section>
-      
-      <section>
-        <h3>Children's Privacy</h3>
+      </div>
+
+      <div class="content-section">
+        <h2>
+          <div class="section-icon">👶</div>
+          Children's Privacy
+        </h2>
         <p>
-          Our App is not directed to children under 13. We do not knowingly collect personal information from children under 13. If you are a parent or guardian and believe your child has provided us with personal information, please contact us immediately at <a href="mailto:NeuroNudgeApp@gmail.com">NeuroNudgeApp@gmail.com</a>, and we will take appropriate steps to remove the data.
+          Our App is not directed to children under 13. We do not knowingly collect personal information from children under 13. 
+          If you are a parent or guardian and believe your child has provided us with personal information, please contact us immediately, 
+          and we will take appropriate steps to remove the data.
         </p>
-      </section>
-      
-      <section>
-        <h3>Changes to This Privacy Policy</h3>
+        
+        <div class="highlight-box">
+          <p>If you discover that a child under 13 has used our app, please contact us immediately so we can address the situation promptly.</p>
+        </div>
+      </div>
+
+      <div class="content-section">
+        <h2>
+          <div class="section-icon">🔄</div>
+          Changes to This Privacy Policy
+        </h2>
         <p>
-          We may update this Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page and updating the "Last Updated" date.
+          We may update this Privacy Policy from time to time to reflect changes in our practices or for legal compliance. 
+          We will notify you of any material changes by posting the new Privacy Policy on this page and updating the "Last Updated" date.
+          We encourage you to review this Privacy Policy periodically to stay informed about how we protect your privacy.
         </p>
-      </section>
-      
-      <section>
-        <h3>Contact Us</h3>
-        <p>
-          If you have any questions about this Privacy Policy, please contact us at: <a href="mailto:NeuroNudgeApp@gmail.com">NeuroNudgeApp@gmail.com</a>
-        </p>
-      </section>
+      </div>
+
+      <div class="contact-section">
+        <h2>
+          <div class="section-icon">📧</div>
+          Contact Us
+        </h2>
+        <p>If you have any questions about this Privacy Policy or our privacy practices, we're here to help.</p>
+        <a href="mailto:neuronudgeapp@gmail.com" class="contact-email">
+          📧 neuronudgeapp@gmail.com
+        </a>
+      </div>
     </div>
   </main>
-  
+
   <footer>
-    <div class="container">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h4>NeuroNudge</h4>
+        <p>Transform your screen time into productive brain training with scientifically-designed cognitive games.</p>
+      </div>
+      
+      <div class="footer-section">
+        <h4>Quick Links</h4>
+        <a href="privacy-policy.html">Privacy Policy</a>
+        <a href="support.html">Support</a>
+        <a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula" target="_blank">Terms of Use</a>
+      </div>
+      
+      <div class="footer-section">
+        <h4>Download</h4>
+        <a href="https://apps.apple.com/no/app/neuronudge-brain-games/id6743054000?l=nb" target="_blank">iOS App Store</a>
+      </div>
+      
+      <div class="footer-section">
+        <h4>Contact</h4>
+        <a href="mailto:neuronudgeapp@gmail.com">neuronudgeapp@gmail.com</a>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
       <p>&copy; 2025 NeuroNudge. All rights reserved.</p>
     </div>
   </footer>

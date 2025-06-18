@@ -3,60 +3,534 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>NeuroNudge Support</title>
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+  <title>Support - NeuroNudge</title>
+  <meta name="description" content="Get help with NeuroNudge brain training app. Find answers to common questions and contact our support team.">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      line-height: 1.6;
+      color: #333;
+      background: #f8fafc;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* Header */
+    header {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .header-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 0;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #4f46e5;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .brain-icon {
+      width: 32px;
+      height: 32px;
+      background: linear-gradient(135deg, #2563eb, #1e40af);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .brain-icon::before {
+      content: '';
+      position: absolute;
+      width: 24px;
+      height: 24px;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' fill='white'%3E%3Cpath d='M50 10 C30 10 15 25 15 45 C15 65 30 80 50 80 C70 80 85 65 85 45 C85 25 70 10 50 10 Z M25 35 C27 35 29 37 29 39 C29 41 27 43 25 43 C23 43 21 41 21 39 C21 37 23 35 25 35 Z M35 25 C37 25 39 27 39 29 C39 31 37 33 35 33 C33 33 31 31 31 29 C31 27 33 25 35 25 Z M50 20 C52 20 54 22 54 24 C54 26 52 28 50 28 C48 28 46 26 46 24 C46 22 48 20 50 20 Z M65 25 C67 25 69 27 69 29 C69 31 67 33 65 33 C63 33 61 31 61 29 C61 27 63 25 65 25 Z M75 35 C77 35 79 37 79 39 C79 41 77 43 75 43 C73 43 71 41 71 39 C71 37 73 35 75 35 Z M25 55 C27 55 29 57 29 59 C29 61 27 63 25 63 C23 63 21 61 21 59 C21 57 23 55 25 55 Z M40 65 C42 65 44 67 44 69 C44 71 42 73 40 73 C38 73 36 71 36 69 C36 67 38 65 40 65 Z M60 65 C62 65 64 67 64 69 C64 71 62 73 60 73 C58 73 56 71 56 69 C56 67 58 65 60 65 Z M75 55 C77 55 79 57 79 59 C79 61 77 63 75 63 C73 63 71 61 71 59 C71 57 73 55 75 55 Z'/%3E%3C/svg%3E");
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 2rem;
+    }
+
+    nav a {
+      color: #64748b;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s ease;
+      position: relative;
+    }
+
+    nav a:hover {
+      color: #4f46e5;
+    }
+
+    nav a.active {
+      color: #4f46e5;
+    }
+
+    nav a.active::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: #4f46e5;
+      border-radius: 1px;
+    }
+
+    /* Main Content */
+    main {
+      padding: 120px 0 80px;
+    }
+
+    .page-header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .page-header h1 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: #1e293b;
+      margin-bottom: 1rem;
+    }
+
+    .page-header p {
+      font-size: 1.2rem;
+      color: #64748b;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    /* Support Sections */
+    .support-section {
+      background: white;
+      border-radius: 16px;
+      padding: 2rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+      border: 1px solid #e2e8f0;
+    }
+
+    .support-section h2 {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: #1e293b;
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .section-icon {
+      width: 32px;
+      height: 32px;
+      background: linear-gradient(135deg, #2563eb, #1e40af);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 16px;
+    }
+
+    .faq-item {
+      margin-bottom: 2rem;
+      padding: 1.5rem;
+      background: #f8fafc;
+      border-radius: 12px;
+      border-left: 4px solid #2563eb;
+    }
+
+    .faq-item:last-child {
+      margin-bottom: 0;
+    }
+
+    .faq-item h3 {
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: #1e293b;
+      margin-bottom: 1rem;
+    }
+
+    .faq-item p {
+      color: #64748b;
+      margin-bottom: 1rem;
+    }
+
+    .faq-item p:last-child {
+      margin-bottom: 0;
+    }
+
+    .faq-item ol {
+      padding-left: 1.5rem;
+      color: #64748b;
+      margin-bottom: 1rem;
+    }
+
+    .faq-item ol:last-child {
+      margin-bottom: 0;
+    }
+
+    .faq-item ol li {
+      margin-bottom: 0.5rem;
+      padding-left: 0.5rem;
+    }
+
+    .faq-item strong {
+      color: #1e293b;
+      font-weight: 600;
+    }
+
+    /* Contact Section */
+    .contact-card {
+      background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
+      color: white;
+      border-radius: 16px;
+      padding: 2rem;
+      text-align: center;
+    }
+
+    .contact-card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.75rem;
+    }
+
+    .contact-card p {
+      margin-bottom: 1.5rem;
+      opacity: 0.9;
+    }
+
+    .contact-email {
+      display: inline-flex;
+      align-items: center;
+      background: rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(10px);
+      padding: 1rem 1.5rem;
+      border-radius: 12px;
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      transition: transform 0.3s ease, background 0.3s ease;
+      gap: 0.5rem;
+    }
+
+    .contact-email:hover {
+      transform: translateY(-2px);
+      background: rgba(255, 255, 255, 0.3);
+    }
+
+    /* Footer */
+    footer {
+      background: #0f172a;
+      color: white;
+      padding: 40px 0;
+    }
+
+    .footer-content {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      margin-bottom: 2rem;
+      max-width: 1200px;
+      margin-left: auto;
+      margin-right: auto;
+      padding: 0 20px;
+    }
+
+    .footer-section h4 {
+      margin-bottom: 1rem;
+      color: #2563eb;
+      font-weight: 600;
+    }
+
+    .footer-section a {
+      color: #94a3b8;
+      text-decoration: none;
+      display: block;
+      margin-bottom: 0.5rem;
+      transition: color 0.3s ease;
+    }
+
+    .footer-section a:hover {
+      color: white;
+    }
+
+    .footer-section p {
+      color: #94a3b8;
+      line-height: 1.6;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid #334155;
+      padding-top: 2rem;
+      text-align: center;
+      color: #64748b;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+    .app-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .app-icon img {        
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .page-header h1 {
+        font-size: 2rem;
+      }
+
+      .support-section {
+        padding: 1.5rem;
+      }
+
+      nav ul {
+        gap: 1rem;
+      }
+
+      .header-container {
+        padding-left: 15px;
+        padding-right: 15px;
+      }
+
+      .faq-item {
+        padding: 1rem;
+      }
+
+      .contact-card {
+        padding: 1.5rem;
+      }
+    }
+  </style>
 </head>
 <body>
   <header>
-    <div class="container header-container">
-      <h1>NeuroNudge</h1>
+    <div class="header-container">
+      <a href="index.html" class="logo">
+        <div class="app-icon">
+          <img src="AppIcon.png" alt="NeuroNudge App Icon">
+        </div>        
+        NeuroNudge
+      </a>
       <nav>
         <ul>
           <li><a href="index.html">Home</a></li>
-          <li><a href="privacy-policy.html">Privacy Policy</a></li>
-          <li><a href="support.html">Support</a></li>
+          <li><a href="privacy-policy.html">Privacy</a></li>
+          <li><a href="support.html" class="active">Support</a></li>
         </ul>
       </nav>
     </div>
   </header>
-  
+
   <main>
     <div class="container">
-      <h2>NeuroNudge Support</h2>
-      
-      <section>
-        <h3>Welcome to the NeuroNudge Support Page!</h3>
-        <p>
-          If you need help with our app, please check the information below. If you still have issues, feel free to contact us at <a href="mailto:NeuroNudgeApp@gmail.com">NeuroNudgeApp@gmail.com</a>.
-        </p>
-      </section>
-      
-      <section>
-        <h3>Frequently Asked Questions (FAQ)</h3>
-        <h4>1. How Do I Restore My Purchases?</h4>
-        <p>
-          If you have purchased the Ad-Free Subscription but still see ads, try restoring your purchase:
-        </p>
-        <ol>
-          <li>Open the NeuroNudge App.</li>
-          <li>Go to Settings.</li>
-          <li>Tap "Restore Purchases" and wait for confirmation.</li>
-          <li>If the issue persists, make sure you are signed in with the same Apple ID used for the purchase.</li>
-        </ol>
-      </section>
-      
-      <section>
-        <h3>Contact Us</h3>
-        <p>
-          If you need further assistance, please email us at <a href="mailto:neuronudgeapp@gmail.com">neuronudgeapp@gmail.com</a>. We will respond as soon as possible. Thank you for using NeuroNudge! 🚀
-        </p>
-      </section>
+      <div class="page-header">
+        <h1>How Can We Help?</h1>
+        <p>Find answers to common questions or get in touch with our support team. We're here to help you get the most out of NeuroNudge.</p>
+      </div>
+
+      <div class="support-section">
+        <h2>
+          <div class="section-icon">❓</div>
+          Frequently Asked Questions
+        </h2>
+        
+        <div class="faq-item">
+          <h3>How do I restore my purchases?</h3>
+          <p>If you've purchased the Ad-Free Subscription but still see ads, follow these steps to restore your purchase:</p>
+          <ol>
+            <li>Open the NeuroNudge app on your device</li>
+            <li>Navigate to Settings (usually found in the main menu)</li>
+            <li>Tap "Restore Purchases" and wait for the confirmation message</li>
+            <li>If the issue persists, ensure you're signed in with the same Apple ID used for the original purchase</li>
+          </ol>
+          <p><strong>Note:</strong> Purchases are linked to your Apple ID and should automatically restore when you reinstall the app on the same account.</p>
+        </div>
+
+        <div class="faq-item">
+          <h3>How do I cancel my subscription?</h3>
+          <p>To cancel your NeuroNudge subscription, you'll need to manage it through your Apple ID settings:</p>
+          <ol>
+            <li>Open Settings on your iPhone or iPad</li>
+            <li>Tap your name at the top</li>
+            <li>Tap "Subscriptions"</li>
+            <li>Find NeuroNudge and tap it</li>
+            <li>Tap "Cancel Subscription"</li>
+          </ol>
+        </div>
+
+        <div class="faq-item">
+          <h3>Why am I still seeing ads after purchasing?</h3>
+          <p>This usually happens when the purchase hasn't been properly restored. Try the restore purchases steps above. If the problem continues, restart the app completely and check your internet connection.</p>
+        </div>
+
+        <div class="faq-item">
+          <h3>How does progress tracking work?</h3>
+          <p>NeuroNudge automatically saves your game progress, scores, and statistics. Your data is stored locally on your device and syncs with your Apple ID when available.</p>
+        </div>
+      </div>
+
+      <div class="support-section">
+        <h2>
+          <div class="section-icon">🎮</div>
+          Game Help
+        </h2>
+        
+        <div class="faq-item">
+          <h3>How do the daily challenges work?</h3>
+          <p>Each day, NeuroNudge presents you with a new brain-teasing challenge. Complete it to earn extra points and maintain your streak. Daily challenges reset at midnight in your local time zone.</p>
+        </div>
+
+        <div class="faq-item">
+          <h3>What do the different game categories train?</h3>
+          <p><strong>Memory Games:</strong> Improve working memory and recall abilities</p>
+          <p><strong>Reaction Time:</strong> Enhance processing speed and quick decision making</p>
+          <p><strong>Pattern Recognition:</strong> Strengthen visual processing and logical thinking</p>
+          <p><strong>Math Skills:</strong> Boost numerical reasoning and mental calculation speed</p>
+        </div>
+
+        <div class="faq-item">
+          <h3>How often should I play to see improvement?</h3>
+          <p>We recommend playing for 10-15 minutes daily for optimal cognitive benefits. Consistency is more important than duration - regular short sessions are more effective than occasional long sessions.</p>
+        </div>
+
+        <div class="faq-item">
+          <h3>Can I sync my progress across devices?</h3>
+          <p>Currently, progress is saved locally on each device. We're working on cloud sync functionality for future updates. Make sure to complete the restore purchases process on each device where you've made purchases.</p>
+        </div>
+      </div>
+
+      <div class="support-section">
+        <h2>
+          <div class="section-icon">⚙️</div>
+          Technical Issues
+        </h2>
+        
+        <div class="faq-item">
+          <h3>The app crashes or freezes frequently</h3>
+          <p>Try these troubleshooting steps:</p>
+          <ol>
+            <li>Force close the app and restart it</li>
+            <li>Restart your device</li>
+            <li>Check for app updates in the App Store</li>
+            <li>Ensure you have enough storage space available</li>
+            <li>Try reinstalling the app (don't forget to restore purchases)</li>
+          </ol>
+        </div>
+
+        <div class="faq-item">
+          <h3>Games are running slowly or lagging</h3>
+          <p>Performance issues can usually be resolved by:</p>
+          <ol>
+            <li>Closing other apps running in the background</li>
+            <li>Reducing visual effects in the app settings if available</li>
+            <li>Updating to the latest iOS version</li>
+            <li>Restarting your device</li>
+          </ol>
+        </div>
+
+        <div class="faq-item">
+          <h3>Audio or sound issues</h3>
+          <p>If you're experiencing audio problems:</p>
+          <ol>
+            <li>Check your device's volume settings</li>
+            <li>Verify that the app's sound settings are enabled</li>
+            <li>Test with headphones to isolate speaker issues</li>
+            <li>Check if Do Not Disturb mode is affecting app sounds</li>
+          </ol>
+        </div>
+      </div>
+
+      <div class="contact-card">
+        <h2>
+          <div class="section-icon">📧</div>
+          Still Need Help?
+        </h2>
+        <p>If you can't find the answer to your question above, our support team is here to help. We typically respond within 24 hours.</p>
+        <a href="mailto:neuronudgeapp@gmail.com" class="contact-email">
+          📧 neuronudgeapp@gmail.com
+        </a>
+      </div>
     </div>
   </main>
-  
+
   <footer>
-    <div class="container">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h4>NeuroNudge</h4>
+        <p>Transform your screen time into productive brain training with scientifically-designed cognitive games.</p>
+      </div>
+      
+      <div class="footer-section">
+        <h4>Quick Links</h4>
+        <a href="privacy-policy.html">Privacy Policy</a>
+        <a href="support.html">Support</a>
+        <a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula" target="_blank">Terms of Use</a>
+      </div>
+      
+      <div class="footer-section">
+        <h4>Download</h4>
+        <a href="https://apps.apple.com/no/app/neuronudge-brain-games/id6743054000?l=nb" target="_blank">iOS App Store</a>
+      </div>
+      
+      <div class="footer-section">
+        <h4>Contact</h4>
+        <a href="mailto:neuronudgeapp@gmail.com">neuronudgeapp@gmail.com</a>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
       <p>&copy; 2025 NeuroNudge. All rights reserved.</p>
     </div>
   </footer>
